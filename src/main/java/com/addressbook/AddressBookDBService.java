@@ -109,7 +109,7 @@ public class AddressBookDBService {
 	}
 
 	//method to get no of contact by city or state from database
-	
+
 	public int getCountByCity() throws Exception {
 		Connection connection =getConnection();
 		Statement st = connection.createStatement();
@@ -122,4 +122,22 @@ public class AddressBookDBService {
 
 		return count;
 	}
+	//method to add contact in addressbook
+	public void addNewContactToAddressbook() throws Exception {
+		Connection connection =getConnection();
+		Statement st = connection.createStatement();
+		String sql ="insert into AddressBook(first_Name , last_Name ,address , city , state ,zip , phoneNumber ,email) value ('prashant' , 'mishra' , 'indore' , 'indore' ,'mp' , 933362 , 6387282 ,'pra@gmail.com')";
+
+		try {
+			Statement statement=connection.createStatement();
+			statement.executeUpdate(sql);
+			connection.close();
+		}
+
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
 }
+

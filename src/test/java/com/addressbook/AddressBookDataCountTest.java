@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import com.addressbook.AddressBookDBService;
 import com.addressbook.PersonInformation;
-import com.emppayroll.EmployeeInfo;
 
 public class AddressBookDataCountTest {
 	AddressBookDBService addressbookservice = new AddressBookDBService();
@@ -39,4 +38,10 @@ public class AddressBookDataCountTest {
 		int actual_size = 1;
 		Assert.assertEquals(actual_size , count);
 	}
+	@Test
+	public void addNewPersonTest() throws Exception {
+		addressbookservice.addNewContactToAddressbook();
+		
+	}
 }
+
