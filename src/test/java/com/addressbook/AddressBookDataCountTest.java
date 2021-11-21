@@ -32,4 +32,11 @@ public class AddressBookDataCountTest {
 		int actual_size = 3;
 		Assert.assertEquals(actual_size , list.size());
 	}
+
+	@Test
+	public void countPersonByCityTest() throws Exception {
+		int count = addressbookservice.getCountByCity();
+		int actual_size = 1;
+		Assert.assertEquals(actual_size , count);
+	}
 }

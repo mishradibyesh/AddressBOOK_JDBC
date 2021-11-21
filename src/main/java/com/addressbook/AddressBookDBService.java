@@ -76,8 +76,8 @@ public class AddressBookDBService {
 		connection.close();
 
 	}
-	
-	//method to retrieve the 
+
+	//method to retrieve the data from a given range of date 
 	public List<PersonInformation> retrieveData_inBetween_Range() throws Exception
 	{
 		String sql = "select * from Addressbook where start between cast('0000-00-00' as Date ) AND DATE(NOW())";
@@ -108,4 +108,18 @@ public class AddressBookDBService {
 
 	}
 
+	//method to get no of contact by city or state
+	
+	public int getCountByCity() throws Exception {
+		Connection connection =getConnection();
+		Statement st = connection.createStatement();
+		ResultSet rs  = st.executeQuery("select count(name) from Addressbook where city = 'pune';");
+		int count = 0;
+		while( rs.next())
+		{
+			count =rs.getInt("count(name)");
+		}
+
+		return count;
+	}
 }
