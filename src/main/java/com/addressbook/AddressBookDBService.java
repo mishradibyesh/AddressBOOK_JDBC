@@ -62,4 +62,18 @@ public class AddressBookDBService {
 		connection.close();
 		return list;
 	}	
+
+	// method to update the table
+	public void updateExistingTable() throws Exception {
+		Connection connection = this.getConnection();
+		String sql ="update addressbook set relation=? where first_name=?";
+		PreparedStatement pmst =connection.prepareStatement(sql);
+		pmst.setString(1, "brother");
+		pmst.setString(2, "Abhay");
+		int i = pmst.executeUpdate();
+
+		connection.close();
+
+	}
+
 }

@@ -9,15 +9,20 @@ import com.addressbook.AddressBookDBService;
 import com.addressbook.PersonInformation;
 
 public class AddressBookDataCountTest {
+	AddressBookDBService addressbookservice = new AddressBookDBService();
 	@Test
-    public void AddressBookDataRetrievedDFromDB_MatchCount() throws Exception {
-		
-		
-		AddressBookDBService addressbookservice = new AddressBookDBService();
-		
+	public void AddressBookDataRetrievedDFromDB_MatchCount() throws Exception {
+
+
 		List<PersonInformation> list = addressbookservice.getDataFromDB();
-		
+
 		int actual_size = 3;
-        Assert.assertEquals(actual_size , list.size());
-    }
+		Assert.assertEquals(actual_size , list.size());
+	}
+
+	@Test
+	public  void UpdateExistingRecord() throws Exception {
+		addressbookservice.updateExistingTable();
+
+	}
 }
