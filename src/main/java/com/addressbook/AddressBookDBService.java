@@ -108,7 +108,7 @@ public class AddressBookDBService {
 
 	}
 
-	//method to get no of contact by city or state
+	//method to get no of contact by city or state from database
 	
 	public int getCountByCity() throws Exception {
 		Connection connection =getConnection();
