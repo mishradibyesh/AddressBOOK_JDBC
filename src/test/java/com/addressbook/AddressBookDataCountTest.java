@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import com.addressbook.AddressBookDBService;
 import com.addressbook.PersonInformation;
+import com.emppayroll.EmployeeInfo;
 
 public class AddressBookDataCountTest {
 	AddressBookDBService addressbookservice = new AddressBookDBService();
@@ -24,5 +25,11 @@ public class AddressBookDataCountTest {
 	public  void UpdateExistingRecord() throws Exception {
 		addressbookservice.updateExistingTable();
 
+	}
+	@Test
+	public void retrieveData_betweenRange() throws Exception {
+		List<PersonInformation> list=  addressbookservice.retrieveData_inBetween_Range();
+		int actual_size = 3;
+		Assert.assertEquals(actual_size , list.size());
 	}
 }

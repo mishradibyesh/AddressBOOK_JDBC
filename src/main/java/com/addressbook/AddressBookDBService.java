@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -73,6 +74,37 @@ public class AddressBookDBService {
 		int i = pmst.executeUpdate();
 
 		connection.close();
+
+	}
+	
+	//method to retrieve the 
+	public List<PersonInformation> retrieveData_inBetween_Range() throws Exception
+	{
+		String sql = "select * from Addressbook where start between cast('0000-00-00' as Date ) AND DATE(NOW())";
+		List< PersonInformation> list=new ArrayList();
+		try {
+			Connection connection =getConnection();
+			Statement statement=connection.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			while( rs.next())
+			{
+				String first_name =rs.getString("first_name");
+				String last_name = rs.getString("last_name");
+				String address = rs.getString("address");
+				String city = rs.getString("city");
+				String state = rs.getString("state");
+				int zip = rs.getInt("zip");
+				long phoneNumber = rs.getLong("phoneNumber");
+				String email = rs.getString("email");
+				PersonInformation info = new PersonInformation(first_name, last_name , address, city,state, zip,phoneNumber, email);
+				list.add(info);
+			}
+			System.out.println("\n Retrieved Data In Range Is:");
+			System.out.println(list);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 
 	}
 
